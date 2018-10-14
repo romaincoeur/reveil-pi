@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pi2D2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/clock.css">
+
+    <style>
+        body {
+            padding-top: 10%;
+        }
+    </style>
+
+</head>
+
+<body class="text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!--clock-->
+
+            <div class="content">
+                <div class="widget clock" id="toulouse" data-timezone="+2">
+                    <div class="shadow"></div>
+                    <div class="hand seconds"></div>
+                    <div class="hand minutes"></div>
+                    <div class="hand hours"></div>
+                    <div class="hand-cap"></div>
+                    <label>Toulouse</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="btn-group-vertical" role="group">
+                <button id="btn-up" type="button" class="btn btn-secondary"><i class="fas fa-chevron-up"></i></button>
+                <button id="btn-stop" type="button" class="btn btn-secondary"><i class="fas fa-stop"></i></button>
+                <button id="btn-down" type="button" class="btn btn-secondary"><i class="fas fa-chevron-down"></i></button>
+            </div>
+
+            <!--<div class="btn-group-vertical" role="group">
+                <button id="btn-chess" type="button" class="btn btn-secondary"><i class="fas fa-chess"></i></button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/clock.js"></script>
+<script>
+  $("#btn-up").click(function() {
+    $.ajax("http://192.168.1.141:8000/?output_port=2");
+  });
+  $("#btn-stop").click(function() {
+    $.ajax("http://192.168.1.141:8000/?output_port=0");
+  });
+  $("#btn-down").click(function() {
+    $.ajax("http://192.168.1.141:8000/?output_port=1");
+  });
+
+  $("#btn-chess").click(function() {
+    console.log("chess");
+    $.ajax({
+      url: "https://textbelt.com/text",
+      method: "POST",
+      data: {
+        phone: "+33698313707",
+        message: "On joue aux échecs ?",
+        key: "9fb8e68cd65e85713b5c09d0fbb66633cd69b002AyNdjaO5o7SD1tUJc7YasLgam"
+      }
+    }).done(function(msg) {
+      $("#btn-chess").removeClass("btn-secondary").addClass("btn-success");
+    }).fail(function(jqXHR, textStatus) {
+      $("#btn-chess").removeClass("btn-secondary").addClass("btn-danger");
+    });
+  });
+
+</script>
+</body>
+</html>
