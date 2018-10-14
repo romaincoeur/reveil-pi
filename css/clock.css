@@ -25,8 +25,8 @@ body {
 }
 .content .widget.clock {
     position: relative;
-    width: 248px;
-    height: 248px;
+    width: 269px;
+    height: 269px;
     border-radius: 100%;
     box-sizing: border-box;
     background-color: #5A2EA5;
@@ -73,7 +73,7 @@ body {
 .content .widget.clock .hand {
     height: 6px;
     position: absolute;
-    top: 118px;
+    top: 132px;
     background-color: #FFF;
     border-radius: 100% 0% 0% 100%;
     transform-origin: right 3px;
